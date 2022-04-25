@@ -1,14 +1,12 @@
-//importar as configurações do servidor
-const { application } = require('express')
 const servidor = require('./config/servidor')
+var app = servidor.app
+var porta = servidor.porta
 
-//carregar o valor da variável app do servidor
-const app = servidor.app
+// rota de exemplo para testar o servidor
+app.get('/', (req, res) => {
+    res.send('Servidor funcionando em http://localhost:' + porta)
+})
 
-//carregar o valor da variável porta
-const porta = servidor.porta
-
-//ligar o servidor com express
-app.listen(porta,()=>{
-    console.log('Servidor em http://localhost:'+porta)
+app.listen(porta, () => {
+    console.log('http://localhost:' + porta)
 })
